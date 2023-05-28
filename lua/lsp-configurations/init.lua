@@ -1,4 +1,4 @@
-local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "cfn-lint" }
+local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls" }
 
 require('mason').setup {
 	ensure_installed = server,
@@ -31,6 +31,7 @@ lspconfig.lua_ls.setup {
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
       }
     }
   }
@@ -40,7 +41,6 @@ lspconfig.pyright.setup {}
 lspconfig.html.setup {}
 lspconfig.omnisharp.setup {}
 lspconfig.yamlls.setup {}
-lspconfig['cfn-lint'].setup {}
 
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function(event)
