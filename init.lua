@@ -13,6 +13,7 @@ opt.guitablabel= '%t'
 vim.call('plug#begin')
 -- Theme Plugins
 Plug ('folke/tokyonight.nvim', { branch= 'main' })
+Plug ('olimorris/onedarkpro.nvim')
 Plug ('morhetz/gruvbox')
 
 -- UI Plugins
@@ -49,7 +50,10 @@ Plug 'lewis6991/gitsigns.nvim'
 vim.call('plug#end')
 
 -- Vim colorschemes
-vim.api.nvim_command [[colorscheme gruvbox]]
+vim.api.nvim_command [[colorscheme onedark]]
+
+-- Vim highlights
+vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 
 -- Vim configurations
 require'lsp-configurations'
@@ -61,7 +65,7 @@ end
 
 require('lualine').setup {
 	options = {
-		theme = 'gruvbox',
+		theme = 'onedark',
 	},
   sections = {
     lualine_c = {
