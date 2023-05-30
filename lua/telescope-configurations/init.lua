@@ -17,6 +17,7 @@ telescope.setup {
 telescope.load_extension('live_grep_args')
 telescope.load_extension('file_browser')
 
+vim.keymap.set('n', '<leader>fr', builtin.resume, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', telescope.extensions.live_grep_args.live_grep_args, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
