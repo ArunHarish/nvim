@@ -9,6 +9,7 @@ opt.expandtab = true
 opt.splitright = true
 opt.autoread = true
 opt.guitablabel= '%t'
+opt.switchbuf= 'newtab'
 
 vim.call('plug#begin')
 -- Theme Plugins
