@@ -25,7 +25,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'ap/vim-css-color'
 
-Plug ('nvim-telescope/telescope.nvim', { tag = '0.1.1' })
+Plug ('nvim-telescope/telescope.nvim')
 Plug ('nvim-telescope/telescope-live-grep-args.nvim')
 Plug ('nvim-telescope/telescope-file-browser.nvim')
 
@@ -56,8 +56,6 @@ vim.api.nvim_command [[colorscheme onedark]]
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 
--- Vim configurations
-require'lsp-configurations'
 
 -- Lualine configurations
 local function showBufferNumber()
@@ -76,7 +74,8 @@ require('lualine').setup {
   }
 }
 
-
+-- Vim configurations
+require'lsp-configurations'
 require'gitsigns-configurations'
 require'cmp-configurations'
 require'telescope-configurations'
