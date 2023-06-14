@@ -74,6 +74,11 @@ require('lualine').setup {
   }
 }
 
+-- General keymaps 
+vim.keymap.set('n', '<space>q', function()
+  vim.api.nvim_command [[ccl]]
+end, {});
+
 -- Vim configurations
 require'lsp-configurations'
 require'gitsigns-configurations'
