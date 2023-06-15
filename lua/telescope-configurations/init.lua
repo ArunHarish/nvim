@@ -8,7 +8,7 @@ telescope.setup {
     layout_config = {
       horizontal = {
         prompt_position = 'top',
-        preview_width = 0.70,
+        preview_width = 0.5,
       }
     },
     path_display = {'smart'},
@@ -35,6 +35,7 @@ vim.keymap.set('n', '<leader>Sg', telescope.extensions.live_grep_args.live_grep_
 vim.keymap.set('n', '<leader>Sb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>Sc', builtin.colorscheme, {})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
+vim.keymap.set('n', '<leader>dw', builtin.diagnostics, {})
 vim.keymap.set('n', '<leader>dd', function()
   builtin.diagnostics {
     bufnr = 0,
@@ -42,7 +43,7 @@ vim.keymap.set('n', '<leader>dd', function()
   end,
 {})
 vim.keymap.set('n', '<leader>dl', builtin.lsp_document_symbols, {})
-vim.keymap.set('n', '<space>fb',  function ()
+vim.keymap.set('n', '<leader>fb',  function ()
   telescope.extensions.file_browser.file_browser {
     path = "%:p:h"
   }
