@@ -23,7 +23,7 @@ lspconfig.lua_ls.setup {
       runtime = {
         version = 'LuaJIT',
       },
-      diagnositcs = {
+      diagnositics = {
         globals = {
           'vim',
           'require',
