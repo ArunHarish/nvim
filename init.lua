@@ -68,7 +68,10 @@ require('lualine').setup {
 	},
   sections = {
     lualine_c = {
-      'datetime',
+      {
+        'datetime',
+        style = '%H:%M:%S',
+      },
       showBufferNumber,
     },
   }
