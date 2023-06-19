@@ -51,7 +51,7 @@ Plug 'lewis6991/gitsigns.nvim'
 vim.call('plug#end')
 
 -- Vim colorschemes
-vim.api.nvim_command [[colorscheme onedark]]
+vim.cmd.colorscheme('onedark')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic = true })
@@ -79,7 +79,7 @@ require('lualine').setup {
 
 -- General keymaps 
 vim.keymap.set('n', '<space>q', function()
-  vim.api.nvim_command [[ccl]]
+  vim.cmd.ccl()
 end, {});
 
 -- Vim configurations
