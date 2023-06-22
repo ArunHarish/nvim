@@ -28,6 +28,7 @@ Plug 'ap/vim-css-color'
 Plug ('nvim-telescope/telescope.nvim')
 Plug ('nvim-telescope/telescope-live-grep-args.nvim')
 Plug ('nvim-telescope/telescope-file-browser.nvim')
+Plug ('tpope/vim-rhubarb')
 
 -- LSP Manager 
 Plug ('williamboman/mason.nvim', { ['do'] = function()
@@ -78,9 +79,7 @@ require('lualine').setup {
 }
 
 -- General keymaps 
-vim.keymap.set('n', '<space>q', function()
-  vim.cmd.ccl()
-end, {});
+vim.keymap.set('n', '<space>q',vim.cmd.ccl, {});
 
 -- Vim configurations
 require'lsp-configurations'
