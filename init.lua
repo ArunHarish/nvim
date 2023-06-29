@@ -12,6 +12,10 @@ opt.guitablabel= '%t'
 opt.switchbuf= 'newtab'
 
 vim.call('plug#begin')
+
+-- Debugger
+Plug ('puremourning/vimspector')
+
 -- Theme Plugins
 Plug ('folke/tokyonight.nvim', { branch= 'main' })
 Plug ('olimorris/onedarkpro.nvim')
@@ -52,7 +56,7 @@ Plug 'lewis6991/gitsigns.nvim'
 vim.call('plug#end')
 
 -- Vim colorschemes
-vim.cmd.colorscheme('onedark')
+vim.cmd.colorscheme('onedark_vivid')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic = true })
