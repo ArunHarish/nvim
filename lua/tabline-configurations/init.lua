@@ -2,20 +2,20 @@ vim.opt.termguicolors = true
 require'bufferline'.setup{
   options = {
     mode = 'tabs',
-    name_formatter = function(opts)
-      -- If there is only one buffer then return that
-      if #(opts.buffers) == 1 then
-        return string.format('%s (%d)', opts.name, opts.buffers[1])
-      end
+    tab_size = 25,
+    diagnostics = 'nvim_lsp',
+    max_name_length = 25,
+    truncate_names = false,
+    numbers = function(opts)
       -- Find window ID
-      local windowID = vim.api.nvim_tabpage_get_win(opts.tabnr)
+      local windowID = vim.api.nvim_tabpage_get_win(opts.id)
       local bufferNumber = vim.fn.winbufnr(windowID)
       if bufferNumber then
-        return string.format('%s (%d)', opts.name, bufferNumber)
+        return opts.raise(bufferNumber)
       end
-      -- If cannot find any just return the file name
-      return string.format('%s', opts.name, opts.tabnr)
-    end
-  }
+      -- If cannot find any just return empty
+      return ''
+    end,
+  },
 }
 
