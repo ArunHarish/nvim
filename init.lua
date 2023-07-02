@@ -33,6 +33,7 @@ Plug ('nvim-telescope/telescope.nvim')
 Plug ('nvim-telescope/telescope-live-grep-args.nvim')
 Plug ('nvim-telescope/telescope-file-browser.nvim')
 Plug ('tpope/vim-rhubarb')
+Plug ('akinsho/bufferline.nvim')
 
 -- LSP Manager 
 Plug ('williamboman/mason.nvim', { ['do'] = function()
@@ -63,10 +64,6 @@ vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 
 
 -- Lualine configurations
-local function showBufferNumber()
-  return vim.fn.bufnr()
-end
-
 require('lualine').setup {
 	options = {
 		theme = 'onedark',
@@ -77,7 +74,6 @@ require('lualine').setup {
         'datetime',
         style = '%H:%M:%S',
       },
-      showBufferNumber,
     },
   }
 }
@@ -86,6 +82,7 @@ require('lualine').setup {
 vim.keymap.set('n', '<space>q',vim.cmd.ccl, {});
 
 -- Vim configurations
+require'tabline-configurations'
 require'lsp-configurations'
 require'gitsigns-configurations'
 require'cmp-configurations'
