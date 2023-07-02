@@ -1,6 +1,14 @@
 local builtin = require('telescope.builtin')
 local telescope = require('telescope')
 local actions = require "telescope.actions"
+local fb_utils = require('telescope._extensions.file_browser.utils')
+
+actions.grep_search = function(prompt_bufrn)
+  local selections = fb_utils.get_selected_files(prompt_bufrn)
+  local selected_directory = vim.tbl_map(function(path) return path:absolute() end, selections)
+  actions.close(prompt_bufrn)
+  require('telescope.builtin').live_grep({ search_dirs = selected_directory })
+end
 
 telescope.setup {
   defaults = {
@@ -20,6 +28,7 @@ telescope.setup {
 			mappings = {
 				i = {
 					["<C-t>"] = actions.select_tab,
+          ["<C-g>"] = actions.grep_search,
 				}
 			}
 		}
