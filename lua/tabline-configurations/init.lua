@@ -2,7 +2,6 @@ vim.opt.termguicolors = true
 require'bufferline'.setup{
   options = {
     mode = 'tabs',
-    tab_size = 20,
     diagnostics = 'nvim_lsp',
     max_name_length = 25,
     truncate_names = false,
