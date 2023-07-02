@@ -1,0 +1,8 @@
+vim.keymap.set('n', '<leader>Dl', function() vim.call('vimspector#Launch') end, {})
+vim.keymap.set('n', '<leader>Dc', function() vim.call('vimspector#Continue') end, {})
+vim.keymap.set('n', '<leader>Di', function() vim.call('vimspector#StepInto') end, {})
+vim.keymap.set('n', '<leader>Do', function() vim.call('vimspector#StepOut') end, {})
+vim.keymap.set('n', '<leader>Dn', function() vim.call('vimspector#StepOver') end, {})
+vim.keymap.set('n', '<leader>Dr', function() vim.call('vimspector#Restart') end, {})
+vim.keymap.set('n', '<leader>Dbt', function() vim.call('vimspector#ToggleBreakpoint') end, {})
+vim.keymap.set('n', '<leader>Dbl', function() vim.call('vimspector#ListBreakpoints') end, {})
