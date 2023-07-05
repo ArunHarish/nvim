@@ -1,4 +1,4 @@
-local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls" }
+local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd" }
 
 require('mason').setup {
 	ensure_installed = server,
@@ -15,6 +15,7 @@ lspconfig.tsserver.setup {
 	end
 }
 
+lspconfig.clangd.setup {}
 lspconfig.eslint.setup {}
 lspconfig.cssls.setup {}
 lspconfig.lua_ls.setup {
