@@ -8,7 +8,6 @@ opt.sw = 2
 opt.expandtab = true
 opt.splitright = true
 opt.autoread = true
-opt.guitablabel= '%t'
 opt.switchbuf= 'newtab'
 
 vim.call('plug#begin')
@@ -20,6 +19,7 @@ Plug ('puremourning/vimspector')
 Plug ('folke/tokyonight.nvim', { branch= 'main' })
 Plug ('olimorris/onedarkpro.nvim')
 Plug ('morhetz/gruvbox')
+Plug ('ayu-theme/ayu-vim')
 
 -- UI Plugins
 Plug 'nvim-lualine/lualine.nvim'
@@ -57,7 +57,8 @@ Plug 'lewis6991/gitsigns.nvim'
 vim.call('plug#end')
 
 -- Vim colorschemes
-vim.cmd.colorscheme('onedark_vivid')
+vim.cmd[[let ayucolor="dark"]]
+vim.cmd.colorscheme('ayu')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic = true })
@@ -66,7 +67,7 @@ vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 -- Lualine configurations
 require('lualine').setup {
 	options = {
-		theme = 'onedark',
+		theme = 'ayu',
 	},
   sections = {
     lualine_c = {
