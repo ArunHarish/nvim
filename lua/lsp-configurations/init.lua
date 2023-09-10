@@ -52,6 +52,7 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 		vim.keymap.set('n', '<leader>gtd', vim.lsp.buf.definition, opts)
 		vim.keymap.set('n', '<leader>gtr', vim.lsp.buf.references, opts)
 		vim.keymap.set('n', '<leader>gti', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<leader>sigh', vim.lsp.buf.signature_help, opts)
 		vim.keymap.set('n', '<leader>magic', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>hmm', vim.lsp.buf.hover, opts)
