@@ -16,9 +16,12 @@ telescope.setup {
     display_stat = { date = true, size = true },
     layout_config = {
       horizontal = {
+        width = 0.9,
         prompt_position = 'top',
+        height = 0.9,
         preview_width = 0.5,
-      }
+        preview_cutoff = 0,
+      },
     },
     path_display = {'smart'},
   },
