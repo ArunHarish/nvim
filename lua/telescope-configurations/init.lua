@@ -1,7 +1,8 @@
 local builtin = require('telescope.builtin')
 local telescope = require('telescope')
-local actions = require "telescope.actions"
+local actions = require 'telescope.actions'
 local fb_utils = require('telescope._extensions.file_browser.utils')
+local custom_extensions = require'telescope-configurations.custom-extensions'
 
 actions.grep_search = function(prompt_bufrn)
   local selections = fb_utils.get_selected_files(prompt_bufrn)
@@ -38,6 +39,7 @@ telescope.setup {
 telescope.load_extension('live_grep_args')
 telescope.load_extension('file_browser')
 
+vim.keymap.set('n', '<leader>St', custom_extensions.search_tab_pages, {})
 vim.keymap.set('n', '<leader>Sr', builtin.resume, {})
 vim.keymap.set('n', '<leader>Sf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>Sg', telescope.extensions.live_grep_args.live_grep_args, {})
