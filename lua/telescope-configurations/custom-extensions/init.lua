@@ -1,5 +1,6 @@
 local pickers = require('telescope.pickers')
 local finders = require('telescope.finders')
+local utils = require('telescope.utils')
 local conf = require('telescope.config').values
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
@@ -35,6 +36,7 @@ local WindowTabPagesIterator = function ()
     end
 
     return {
+      tabpage = tabpage,
       window = windowID,
       buffer = buffer,
       path = bufferPath,
@@ -44,25 +46,28 @@ end
 
 CustomExtensions.search_tab_pages = function ()
   local tabpageList = {}
+  local config = {}
 
   for window in WindowTabPagesIterator() do
     table.insert(tabpageList, window)
   end
 
-  pickers.new({}, {
+  pickers.new(config, {
     prompt_title = 'Tabpages',
     finder = finders.new_table {
       results = tabpageList,
       entry_maker = function(entry)
+        local display = string.format("%d %s %s", entry.tabpage, utils.get_devicons(entry.path), entry.path)
         return {
-          display = entry.path,
+          display = display,
           ordinal = entry.path,
+          tabpageID = entry.tabpage,
           bufferID = entry.buffer,
           windowID = entry.window,
         }
       end
     },
-    sorter = conf.file_sorter({}),
+    sorter = conf.file_sorter(config),
     attach_mappings = function(prompt_number)
       actions.select_default:replace(function ()
         actions.close(prompt_number)
