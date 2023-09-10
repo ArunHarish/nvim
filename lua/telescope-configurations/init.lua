@@ -1,8 +1,8 @@
 local builtin = require('telescope.builtin')
 local telescope = require('telescope')
-local actions = require 'telescope.actions'
+local actions = require('telescope.actions')
 local fb_utils = require('telescope._extensions.file_browser.utils')
-local custom_extensions = require'telescope-configurations.custom-extensions'
+local custom_extensions = require('telescope-configurations.custom-extensions')
 
 actions.grep_search = function(prompt_bufrn)
   local selections = fb_utils.get_selected_files(prompt_bufrn)
