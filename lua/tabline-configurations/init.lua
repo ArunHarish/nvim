@@ -7,13 +7,20 @@ require'bufferline'.setup{
     truncate_names = false,
     numbers = function(opts)
       -- Find window ID
-      local windowID = vim.api.nvim_tabpage_get_win(opts.id)
-      local bufferNumber = vim.fn.winbufnr(windowID)
-      if bufferNumber then
-        return opts.lower(bufferNumber) .. '.' .. opts.raise(opts.id)
+      local currentWindowID = vim.api.nvim_tabpage_get_win(opts.id)
+      local windowIDs = vim.api.nvim_tabpage_list_wins(opts.id)
+      local bufferNumber = vim.fn.winbufnr(currentWindowID)
+      local multiWindowTabTitle = ''
+
+      if #windowIDs > 1 then
+        multiWindowTabTitle = '〓'
       end
-      -- If cannot find any just return empty
-      return ''
+
+      if bufferNumber then
+        return string.format("%s %s.%s", multiWindowTabTitle, opts.lower(bufferNumber), opts.raise(opts.id))
+      end
+
+      return multiWindowTabTitle
     end,
   },
 }
