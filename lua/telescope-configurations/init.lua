@@ -24,9 +24,18 @@ telescope.setup {
       },
     },
     path_display = {'smart'},
+    mappings = {
+      i = {
+          ["<C-f>"] = actions.preview_scrolling_left,
+          ["<C-l>"] = actions.preview_scrolling_right,
+          ["<A-f>"] = actions.results_scrolling_left,
+          ["<A-l>"] = actions.results_scrolling_right,
+      }
+    }
   },
 	extensions = {
 		file_browser = {
+      file_width = 40,
       git_status = true,
       hijack_netrw = true,
 			mappings = {
