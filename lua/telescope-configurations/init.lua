@@ -7,8 +7,13 @@ local custom_extensions = require('telescope-configurations.custom-extensions')
 actions.grep_search = function(prompt_bufrn)
   local selections = fb_utils.get_selected_files(prompt_bufrn)
   local selected_directory = vim.tbl_map(function(path) return path:absolute() end, selections)
+  local selections_directory_relative = vim.tbl_map(function(path) return path:make_relative() end, selections)
   actions.close(prompt_bufrn)
-  require('telescope.builtin').live_grep({ search_dirs = selected_directory })
+
+  require('telescope.builtin').live_grep({
+    search_dirs = selected_directory,
+    prompt_title = string.format("Live Grep (%s)", table.concat(selections_directory_relative, ',')),
+  })
 end
 
 telescope.setup {

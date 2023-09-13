@@ -57,7 +57,9 @@ CustomExtensions.search_tab_pages = function ()
     finder = finders.new_table {
       results = tabpageList,
       entry_maker = function(entry)
-        local display = string.format("%d %s %s", entry.tabpage, utils.get_devicons(entry.path), entry.path)
+        local devicons = utils.get_devicons(entry.path)
+        local basename = utils.path_smart(entry.path)
+        local display = string.format("%d %s %s", entry.tabpage, devicons, basename)
         return {
           display = display,
           ordinal = entry.path,
