@@ -47,8 +47,8 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function(event)
 		local opts = { buffer = event.buf }
     vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '<leader>d[', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', '<leader>d]', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 		vim.keymap.set('n', '<leader>gtd', vim.lsp.buf.definition, opts)
 		vim.keymap.set('n', '<leader>gtr', vim.lsp.buf.references, opts)
 		vim.keymap.set('n', '<leader>gti', vim.lsp.buf.implementation, opts)
