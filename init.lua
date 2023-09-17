@@ -57,7 +57,7 @@ Plug 'lewis6991/gitsigns.nvim'
 vim.call('plug#end')
 
 -- Vim colorschemes
-vim.cmd[[let ayucolor="dark"]]
+vim.cmd[[let ayucolor="light"]]
 vim.cmd.colorscheme('ayu')
 
 -- Vim highlights
