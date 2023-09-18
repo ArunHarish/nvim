@@ -1,5 +1,10 @@
 vim.opt.termguicolors = true
 require'bufferline'.setup{
+  highlights = {
+    indicator_selected = {
+      fg = '#ff0000',
+    }
+  },
   options = {
     mode = 'tabs',
     diagnostics = 'nvim_lsp',
