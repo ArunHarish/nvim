@@ -56,21 +56,5 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 		vim.keymap.set('n', '<leader>magic', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>hmm', vim.lsp.buf.hover, opts)
-    -- Temporary fix for OmniSharp :cry:
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-    if client.name == 'omnisharp' then
-      local function toSnakeCase(str)
-        return string.gsub(str, "%s*[- ]%s*", "_")
-      end
-      local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-      for i, v in ipairs(tokenModifiers) do
-        tokenModifiers[i] = toSnakeCase(v)
-      end
-      local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-      for i, v in ipairs(tokenTypes) do
-        tokenTypes[i] = toSnakeCase(v)
-      end
-    end
 	end
 })
