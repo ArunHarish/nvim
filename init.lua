@@ -21,6 +21,8 @@ Plug ('olimorris/onedarkpro.nvim')
 Plug ('morhetz/gruvbox')
 Plug ('ayu-theme/ayu-vim')
 
+Plug ('catppuccin/nvim', { as = 'catppuccin-mocha' })
+
 -- UI Plugins
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-tree/nvim-web-devicons'
