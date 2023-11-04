@@ -1,4 +1,4 @@
-local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd" }
+local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls" }
 
 require('mason').setup {
 	ensure_installed = server,
@@ -42,6 +42,7 @@ lspconfig.pyright.setup {}
 lspconfig.html.setup {}
 lspconfig.omnisharp.setup {}
 lspconfig.yamlls.setup {}
+lspconfig.jsonls.setup {}
 
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function(event)
