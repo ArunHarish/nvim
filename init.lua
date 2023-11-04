@@ -9,6 +9,8 @@ opt.expandtab = true
 opt.splitright = true
 opt.autoread = true
 opt.switchbuf= 'newtab'
+opt.foldmethod = 'syntax'
+opt.foldlevel = 999
 
 vim.call('plug#begin')
 
