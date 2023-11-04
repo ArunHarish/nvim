@@ -69,7 +69,7 @@ vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 -- Lualine configurations
 require('lualine').setup {
 	options = {
-		theme = 'ayu',
+		theme = 'auto',
 	},
   sections = {
     lualine_c = {
