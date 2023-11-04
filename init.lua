@@ -58,6 +58,9 @@ Plug 'sbdchd/neoformat'
 -- Git plugin 
 Plug 'lewis6991/gitsigns.nvim'
 
+-- navic
+Plug 'SmiteshP/nvim-navic'
+
 vim.call('plug#end')
 
 -- Vim colorschemes
