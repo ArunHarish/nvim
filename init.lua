@@ -70,22 +70,6 @@ vim.cmd.colorscheme('ayu')
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 
-
--- Lualine configurations
-require('lualine').setup {
-	options = {
-		theme = 'auto',
-	},
-  sections = {
-    lualine_c = {
-      {
-        'datetime',
-        style = '%H:%M:%S',
-      },
-    },
-  }
-}
-
 -- General keymaps 
 vim.keymap.set('n', '<space>q',vim.cmd.ccl, {});
 
@@ -98,3 +82,5 @@ require'telescope-configurations'
 require'neoformat-configurations'
 require'vimspector-configurations'
 require'transparent-mode-configurations'
+require'lualine-configurations'
+require'navic-configurations'
