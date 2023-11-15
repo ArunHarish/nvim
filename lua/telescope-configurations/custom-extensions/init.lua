@@ -4,6 +4,7 @@ local utils = require('telescope.utils')
 local conf = require('telescope.config').values
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
+local previewers = require('telescope.previewers')
 
 local CustomExtensions = {}
 
@@ -78,7 +79,23 @@ CustomExtensions.search_tab_pages = function ()
         vim.api.nvim_set_current_win(selection.windowID)
       end)
       return true
-    end
+    end,
+    previewer = previewers.new_buffer_previewer {
+      title = "Tab preview",
+      get_buffer_by_name = function (_, entry)
+        return entry.display
+      end,
+      define_preview = function(self, entry)
+        -- Set the buffer preview
+        previewers.buffer_previewer_maker(entry.ordinal, self.state.bufnr, {
+          winid = self.state.winid,
+          callback = function()
+            local cursor_position = vim.api.nvim_win_get_cursor(entry.windowID)
+            vim.api.nvim_win_set_cursor(self.state.winid, cursor_position)
+          end
+        })
+      end,
+    },
   }):find()
 end
 
