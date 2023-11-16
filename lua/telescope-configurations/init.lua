@@ -2,6 +2,7 @@ local builtin = require('telescope.builtin')
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 local fb_utils = require('telescope._extensions.file_browser.utils')
+local fb_actions = require('telescope._extensions.file_browser.actions')
 local custom_extensions = require('telescope-configurations.custom-extensions')
 
 actions.grep_search = function(prompt_bufrn)
@@ -47,6 +48,7 @@ telescope.setup {
 				i = {
 					["<C-t>"] = actions.select_tab,
           ["<C-g>"] = actions.grep_search,
+          ["<C-Space>"] = fb_actions.toggle_hidden,
 				}
 			}
 		}
