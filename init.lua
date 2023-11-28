@@ -3,6 +3,7 @@ local Plug = vim.fn['plug#']
 
 -- Vim options
 opt.number = true
+opt.rnu = true
 opt.ts = 2
 opt.sw = 2
 opt.expandtab = true
