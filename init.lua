@@ -62,14 +62,20 @@ Plug 'lewis6991/gitsigns.nvim'
 -- navic
 Plug 'SmiteshP/nvim-navic'
 
+-- fzf
+Plug ('junegunn/fzf', { ['do'] = function ()
+  vim.fn["fzf#install"]()
+  end
+})
+
 vim.call('plug#end')
 
 -- Vim colorschemes
-vim.cmd[[let ayucolor="dark"]]
-vim.cmd.colorscheme('ayu')
+-- vim.cmd[[let ayucolor="dark"]]
+vim.cmd.colorscheme('catppuccin-mocha')
 
 -- Vim highlights
-vim.api.nvim_set_hl(0, 'Comment', { italic = true })
+vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { italic = true })
 
 -- General keymaps 
 vim.keymap.set('n', '<space>q',vim.cmd.ccl, {});
