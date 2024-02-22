@@ -27,7 +27,7 @@ vim.keymap.set('n', '<leader>DbL', function()
   },
     function(input)
       if input then
-        vim.fn["vimspector#ToggleBreakpoint"]({
+        vim.fn["vimspector#SetLineBreakpoint"]({
           logMessage = input,
         })
       end
