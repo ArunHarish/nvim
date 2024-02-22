@@ -23,7 +23,7 @@ Plug ('folke/tokyonight.nvim', { branch= 'main' })
 Plug ('olimorris/onedarkpro.nvim')
 Plug ('morhetz/gruvbox')
 Plug ('ayu-theme/ayu-vim')
-
+Plug ('projekt0n/github-nvim-theme')
 Plug ('catppuccin/nvim', { as = 'catppuccin-mocha' })
 
 -- UI Plugins
@@ -72,7 +72,7 @@ vim.call('plug#end')
 
 -- Vim colorschemes
 -- vim.cmd[[let ayucolor="dark"]]
-vim.cmd.colorscheme('catppuccin-mocha')
+vim.cmd.colorscheme('github_light_default')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { italic = true })
