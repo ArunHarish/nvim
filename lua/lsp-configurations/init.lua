@@ -1,4 +1,4 @@
-local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls" }
+local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service" }
 
 require('mason').setup {
 	ensure_installed = server,
@@ -44,6 +44,7 @@ lspconfig.html.setup {}
 lspconfig.omnisharp.setup {}
 lspconfig.yamlls.setup {}
 lspconfig.jsonls.setup {}
+lspconfig.docker_compose_language_service.setup {}
 
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function(event)
