@@ -12,6 +12,7 @@ opt.autoread = true
 opt.switchbuf= 'newtab'
 opt.foldmethod = 'syntax'
 opt.foldlevel = 999
+opt.clipboard = 'unnamed'
 
 vim.call('plug#begin')
 
