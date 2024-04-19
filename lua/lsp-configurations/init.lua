@@ -1,4 +1,4 @@
-local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service" }
+local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls" }
 
 require('mason').setup {
 	ensure_installed = server,
@@ -16,6 +16,7 @@ lspconfig.tsserver.setup {
 }
 
 lspconfig.clangd.setup {}
+lspconfig.bashls.setup {}
 lspconfig.terraformls.setup {}
 lspconfig.eslint.setup {}
 lspconfig.cssls.setup {}
