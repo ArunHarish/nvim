@@ -55,6 +55,7 @@ telescope.setup {
     mappings = {
       i = {
           ["<C-f>"] = actions.preview_scrolling_left,
+					["<CR>"] = actions.select_drop,
           ["<C-l>"] = actions.preview_scrolling_right,
           ["<A-f>"] = actions.results_scrolling_left,
           ["<A-l>"] = actions.results_scrolling_right,
@@ -69,7 +70,6 @@ telescope.setup {
       hijack_netrw = true,
 			mappings = {
 				i = {
-					["<C-t>"] = actions.select_tab,
           ["<C-g>"] = actions.grep_search,
           ["<C-Space>"] = fb_actions.toggle_hidden,
 				}
