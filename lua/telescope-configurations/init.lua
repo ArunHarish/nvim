@@ -18,7 +18,29 @@ actions.grep_search = function(prompt_bufrn)
 end
 
 telescope.setup {
+  pickers = {
+    grep_string = {
+      additional_args = {
+        "--hidden"
+      }
+    },
+    live_grep = {
+      additional_args = {
+        "--hidden"
+      },
+    },
+  },
   defaults = {
+    vimgrep_arguments = {
+        'rg',
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '--hidden',
+    },
     display_stat = { date = true, size = true },
     layout_config = {
       horizontal = {
@@ -41,6 +63,7 @@ telescope.setup {
   },
 	extensions = {
 		file_browser = {
+      hidden = true,
       file_width = 40,
       git_status = true,
       hijack_netrw = true,
