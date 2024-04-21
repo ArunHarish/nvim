@@ -1,5 +1,6 @@
 local builtin = require('telescope.builtin')
 local telescope = require('telescope')
+local utils = require('telescope.utils')
 local actions = require('telescope.actions')
 local fb_utils = require('telescope._extensions.file_browser.utils')
 local fb_actions = require('telescope._extensions.file_browser.actions')
@@ -29,6 +30,23 @@ telescope.setup {
         "--hidden"
       },
     },
+    lsp_references = {
+      theme = 'cursor',
+      path_display = function(_, path)
+        local shorten = utils.transform_path({
+          path_display = {
+            shorten = {
+              len = 1,
+              exclude = { 1, 2, -1 }
+            }
+          },
+        } , path)
+        return shorten
+      end,
+      layout_config = {
+        width = 150,
+      }
+    }
   },
   defaults = {
     vimgrep_arguments = {
@@ -104,3 +122,4 @@ vim.keymap.set('n', '<leader>fb',  function ()
   }
 	end,
 { noremap = true })
+vim.keymap.set('n', '<leader>lr', builtin.lsp_references, {})
