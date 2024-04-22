@@ -13,6 +13,7 @@ actions.grep_search = function(prompt_bufrn)
   actions.close(prompt_bufrn)
 
   require('telescope.builtin').live_grep({
+    hidden = true,
     search_dirs = selected_directory,
     prompt_title = string.format("Live Grep (%s)", table.concat(selections_directory_relative, ',')),
   })
@@ -102,7 +103,7 @@ telescope.load_extension('file_browser')
 
 vim.keymap.set('n', '<leader>St', custom_extensions.search_tab_pages, {})
 vim.keymap.set('n', '<leader>Sr', builtin.resume, {})
-vim.keymap.set('n', '<leader>Sf', builtin.find_files, {})
+vim.keymap.set('n', '<leader>Sf', function() builtin.find_files { hidden = true,  } end, {})
 vim.keymap.set('n', '<leader>Sg', telescope.extensions.live_grep_args.live_grep_args, {})
 vim.keymap.set('n', '<leader>Sb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>Sc', builtin.colorscheme, {})
