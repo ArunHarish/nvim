@@ -30,7 +30,7 @@ require('lualine').setup {
           navic_opts = nil
       }
     },
-    lualine_x = {
+    lualine_y = {
       filepath,
     }
   }
