@@ -73,7 +73,7 @@ vim.call('plug#end')
 
 -- Vim colorschemes
 vim.cmd[[let ayucolor="dark"]]
-vim.cmd.colorscheme('ayu')
+vim.cmd.colorscheme('github_light')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic=true })
@@ -92,3 +92,4 @@ require'vimspector-configurations'
 require'transparent-mode-configurations'
 require'lualine-configurations'
 require'navic-configurations'
+require'theme-configurations'
