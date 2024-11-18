@@ -1,4 +1,4 @@
-local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls" }
+local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls", "rust_analyzer" }
 
 require('mason').setup {
 	ensure_installed = server,
@@ -15,6 +15,7 @@ lspconfig.tsserver.setup {
 	end
 }
 
+lspconfig.rust_analyzer.setup {}
 lspconfig.clangd.setup {}
 lspconfig.bashls.setup {}
 lspconfig.terraformls.setup {}
