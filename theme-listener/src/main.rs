@@ -12,6 +12,7 @@ enum Theme {
 pub struct OrgFreeDesktopPortalDesktop {
     pub sender: String,
     pub key: String,
+    pub value: Variant<Box<dyn arg::RefArg>>,
 }
 
 impl arg::AppendAll for OrgFreeDesktopPortalDesktop {
@@ -25,7 +26,7 @@ impl arg::ReadAll for OrgFreeDesktopPortalDesktop {
         Ok(OrgFreeDesktopPortalDesktop {
             sender: i.read()?,
             key: i.read()?,
-            // value: i.read()?,
+            value: i.read()?,
         })
     }
 }
