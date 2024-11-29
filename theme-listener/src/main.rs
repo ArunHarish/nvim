@@ -1,23 +1,19 @@
 use std::time::Duration;
 extern crate dbus;
 
+use dbus::arg::{ RefArg, Variant };
 use dbus::blocking::{ Connection, Proxy };
 use dbus::{ arg, Message };
-
-enum Theme {
-    DARK,
-    LIGHT,
-}
 
 pub struct OrgFreeDesktopPortalDesktop {
     pub sender: String,
     pub key: String,
-    pub value: Variant<Box<dyn arg::RefArg>>,
+    pub value: Variant<Box<dyn RefArg>>,
 }
 
 impl arg::AppendAll for OrgFreeDesktopPortalDesktop {
     fn append(&self, i: &mut arg::IterAppend) {
-        arg::RefArg::append(&self.sender, i);
+        RefArg::append(&self.sender, i);
     }
 }
 
@@ -42,7 +38,8 @@ fn signal_listen_freedesktop_theme() -> Result<bool, dbus::Error> {
 
     let _ = proxy.match_signal(|h: OrgFreeDesktopPortalDesktop, _: &Connection, _: &Message| {
         if h.sender == "org.freedesktop.appearance" && h.key == "color-scheme" {
-            println!("Sender {} {}", h.sender, h.key);
+            let theme = h.value.as_i64();
+            try_output_theme(theme);
         }
         true
     });
@@ -50,43 +47,36 @@ fn signal_listen_freedesktop_theme() -> Result<bool, dbus::Error> {
     loop { connection.process(Duration::from_millis(1000))?; }
 }
 
-fn retrieve_freedesktop_theme() -> Result<Theme, dbus::Error> {
+fn retrieve_freedesktop_theme() -> Result<bool, dbus::Error> {
     let conn = Connection::new_session()?;
     let proxy = Proxy::new("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", Duration::from_millis(5000), &conn);
-    let result: (arg::Variant<Box<dyn arg::RefArg>>,) = proxy.method_call("org.freedesktop.portal.Settings", "Read", ("org.freedesktop.appearance", "color-scheme",))?;
+    let result: (Variant<Box<dyn RefArg>>,) = proxy.method_call("org.freedesktop.portal.Settings", "Read", ("org.freedesktop.appearance", "color-scheme",))?;
 
-    let theme_value = result.0.0.as_i64();
+    let theme = result.0.0.as_i64();
+    try_output_theme(theme);
+    Ok(true)
+}
+
+fn try_output_theme(theme_value: Option<i64>) {
     if let Some(value) = theme_value {
         if value == 1 {
-            Ok(Theme::DARK)
+            println!("dark");
         } else {
-            Ok(Theme::LIGHT)
+            println!("light");
         }
     } else {
         panic!("Unable to retrieve appearance information");
     }
 }
 
-fn output_theme(theme: Theme) {
-    match theme {
-        Theme::DARK => {
-            println!("dark");
-        }
-        Theme::LIGHT => {
-            println!("light");
-        }
-    }
-}
-
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     if std::env::consts::OS == "linux" {
-        let theme = retrieve_freedesktop_theme()?;
-        output_theme(theme);
+        retrieve_freedesktop_theme()?;
         signal_listen_freedesktop_theme()?;
     } else if std::env::consts::OS == "macos" {
-        output_theme(Theme::LIGHT);
+        try_output_theme(Some(1));
     } else {
-        output_theme(Theme::DARK);
+        try_output_theme(Some(1));
     };
 
     Ok(())
