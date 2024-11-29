@@ -73,7 +73,7 @@ vim.call('plug#end')
 
 -- Vim colorschemes
 vim.cmd[[let ayucolor="dark"]]
-vim.cmd.colorscheme('github_light')
+vim.cmd.colorscheme('ayu')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic=true })
