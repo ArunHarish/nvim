@@ -5,12 +5,15 @@ local function choose_formatter(event)
    if client.name == "biome" and client.root_dir and string.len(client.root_dir) > 0 then
       vim.cmd("Neoformat biome")
       return
+   elseif client.name == "rust_analyzer" then
+     vim.cmd("Neoformat rustfmt")
+     return
    end
   end
   vim.cmd("Neoformat prettier")
 end
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.ts", "*.js", "*.tsx", "*.jsx", "*.mjs" },
+  pattern = { "*.ts", "*.js", "*.tsx", "*.jsx", "*.mjs", "*.rs" },
   callback = function(event)
     choose_formatter(event)
     if vim.fn.exists(':EslintFixAll') > 0 then
