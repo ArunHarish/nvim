@@ -9,7 +9,7 @@ opt.sw = 2
 opt.expandtab = true
 opt.splitright = true
 opt.autoread = true
-opt.switchbuf= 'newtab'
+opt.switchbuf= 'usetab'
 opt.foldmethod = 'syntax'
 opt.foldlevel = 999
 opt.clipboard = 'unnamed'
@@ -73,7 +73,7 @@ vim.call('plug#end')
 
 -- Vim colorschemes
 vim.cmd[[let ayucolor="dark"]]
-vim.cmd.colorscheme('ayu')
+vim.cmd.colorscheme('github_light')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic=true })
