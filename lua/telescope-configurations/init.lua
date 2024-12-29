@@ -101,26 +101,26 @@ telescope.setup {
 telescope.load_extension('live_grep_args')
 telescope.load_extension('file_browser')
 
-vim.keymap.set('n', '<leader>St', custom_extensions.search_tab_pages, {})
-vim.keymap.set('n', '<leader>Sr', builtin.resume, {})
-vim.keymap.set('n', '<leader>Sf', function() builtin.find_files { hidden = true,  } end, {})
-vim.keymap.set('n', '<leader>Sg', telescope.extensions.live_grep_args.live_grep_args, {})
-vim.keymap.set('n', '<leader>Sb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>Sc', builtin.colorscheme, {})
-vim.keymap.set('n', '<leader>Sj', builtin.jumplist, {})
-vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
-vim.keymap.set('n', '<leader>dw', builtin.diagnostics, {})
-vim.keymap.set('n', '<leader>dd', function()
+vim.keymap.set('n', ']St', custom_extensions.search_tab_pages, {})
+vim.keymap.set('n', ']Sr', builtin.resume, {})
+vim.keymap.set('n', ']Sf', function() builtin.find_files { hidden = true,  } end, {})
+vim.keymap.set('n', ']Sg', telescope.extensions.live_grep_args.live_grep_args, {})
+vim.keymap.set('n', ']Sb', builtin.buffers, {})
+vim.keymap.set('n', ']Sc', builtin.colorscheme, {})
+vim.keymap.set('n', ']Sj', builtin.jumplist, {})
+vim.keymap.set('n', ']gs', builtin.git_status, {})
+vim.keymap.set('n', ']dw', builtin.diagnostics, {})
+vim.keymap.set('n', ']dd', function()
   builtin.diagnostics {
     bufnr = 0,
   }
   end,
 {})
-vim.keymap.set('n', '<leader>dl', builtin.lsp_document_symbols, {})
-vim.keymap.set('n', '<leader>fb',  function ()
+vim.keymap.set('n', ']dl', builtin.lsp_document_symbols, {})
+vim.keymap.set('n', ']fb',  function ()
   telescope.extensions.file_browser.file_browser {
     path = "%:p:h"
   }
 	end,
 { noremap = true })
-vim.keymap.set('n', '<leader>lr', builtin.lsp_references, {})
+vim.keymap.set('n', ']lr', builtin.lsp_references, {})

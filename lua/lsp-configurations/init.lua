@@ -52,15 +52,23 @@ lspconfig.biome.setup {}
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
 	callback = function(event)
 		local opts = { buffer = event.buf }
-    vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-		vim.keymap.set('n', '<leader>gtd', vim.lsp.buf.definition, opts)
-		vim.keymap.set('n', '<leader>gtr', vim.lsp.buf.references, opts)
-		vim.keymap.set('n', '<leader>gti', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<leader>sigh', vim.lsp.buf.signature_help, opts)
-		vim.keymap.set('n', '<leader>magic', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>hmm', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', ']o', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
+
+		vim.keymap.set('n', ']gd', function() vim.lsp.buf.definition({ jump_type='tab', reuse_win=true, }) end, opts)
+    vim.keymap.set('n', ']gD', function() vim.lsp.buf.definition({ jump_type='tabn', reuse_win=true, }) end, opts)
+
+		vim.keymap.set('n', ']gr', function() vim.lsp.buf.references({ jump_type='tab', reuse_win=true }) end, opts)
+
+		vim.keymap.set('n', ']gi', function() vim.lsp.buf.implementation({ jump_type='tab', reuse_win=true }) end, opts)
+    vim.keymap.set('n', ']sign', vim.lsp.buf.signature_help, opts)
+		vim.keymap.set('n', ']act', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', ']rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', ']hmm', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', ']tc', function()
+        vim.cmd("tabo")
+      end
+    )
 	end
 })
