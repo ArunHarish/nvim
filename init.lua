@@ -9,7 +9,7 @@ opt.sw = 2
 opt.expandtab = true
 opt.splitright = true
 opt.autoread = true
-opt.switchbuf= 'newtab'
+opt.switchbuf= 'usetab'
 opt.foldmethod = 'syntax'
 opt.foldlevel = 999
 opt.clipboard = 'unnamed'
@@ -54,9 +54,6 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'tpope/vim-fugitive'
 
--- Neoformat
-Plug 'sbdchd/neoformat'
-
 -- Git plugin 
 Plug 'lewis6991/gitsigns.nvim'
 
@@ -73,7 +70,7 @@ vim.call('plug#end')
 
 -- Vim colorschemes
 vim.cmd[[let ayucolor="dark"]]
-vim.cmd.colorscheme('ayu')
+vim.cmd.colorscheme('github_light')
 
 -- Vim highlights
 vim.api.nvim_set_hl(0, 'Comment', { italic=true })
@@ -87,7 +84,7 @@ require'lsp-configurations'
 require'gitsigns-configurations'
 require'cmp-configurations'
 require'telescope-configurations'
-require'neoformat-configurations'
+require'format-configurations'
 require'vimspector-configurations'
 require'transparent-mode-configurations'
 require'lualine-configurations'
