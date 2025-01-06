@@ -5,7 +5,7 @@ local function filepath()
   for pathname in string.gmatch(file_path, "[^/]+") do
     table.insert(path_result, pathname)
   end
-  
+
   if #path_result > 4 then
     -- Remove the middle elements
     return string.format("%s/%s/.../%s/%s", path_result[1], path_result[2], path_result[3], path_result[4])
