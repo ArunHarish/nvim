@@ -1,4 +1,4 @@
-local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls", "vimls", "snyk_ls", "biome" }
+local server = { "tsserver", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls","rust_analyzer", "vimls", "snyk_ls", "biome" }
 
 require('mason').setup {
 	ensure_installed = server,
@@ -15,6 +15,7 @@ lspconfig.tsserver.setup {
 	end
 }
 
+lspconfig.rust_analyzer.setup {}
 lspconfig.vimls.setup {}
 lspconfig.clangd.setup {}
 lspconfig.bashls.setup {}
@@ -47,6 +48,8 @@ lspconfig.omnisharp.setup {}
 lspconfig.yamlls.setup {}
 lspconfig.jsonls.setup {}
 lspconfig.docker_compose_language_service.setup {}
+
+-- Formatters
 lspconfig.biome.setup {}
 
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
