@@ -2,9 +2,24 @@ local builtin = require('telescope.builtin')
 local telescope = require('telescope')
 local utils = require('telescope.utils')
 local actions = require('telescope.actions')
+local action_state = require('telescope.actions.state')
 local fb_utils = require('telescope._extensions.file_browser.utils')
 local fb_actions = require('telescope._extensions.file_browser.actions')
 local custom_extensions = require('telescope-configurations.custom-extensions')
+
+
+-- Utility function to merge two tables
+local function merge(a, b)
+  local result = {}
+  for _, v in ipairs(a) do
+    table.insert(result, v)
+  end
+
+  for _, v in ipairs(b) do
+    table.insert(result, v)
+  end
+  return result
+end
 
 actions.grep_search = function(prompt_bufrn)
   local selections = fb_utils.get_selected_files(prompt_bufrn)
@@ -19,8 +34,33 @@ actions.grep_search = function(prompt_bufrn)
   })
 end
 
+-- Custom Git Checkout Action
+actions.git_checkout_multiple = function(prompt_bufrn)
+  local current_picker = action_state.get_current_picker(prompt_bufrn)
+  local selections = current_picker:get_multi_selection()
+  local git_checkout_files = {}
+  for _, selection in ipairs(selections) do
+    table.insert(git_checkout_files, selection.value)
+  end
+
+  local git_command = merge({ "git", "checkout" }, git_checkout_files)
+  utils.get_os_command_output(git_command)
+
+  current_picker:refresh()
+end
+
 telescope.setup {
   pickers = {
+    git_status = {
+      mappings = {
+        n = {
+          ["c"] = actions.git_checkout,
+          ["<Space>"] = actions.toggle_selection + actions.move_selection_worse,
+          ["<S-Space>"] = actions.toggle_selection + actions.move_selection_better,
+          ["<Tab>"] = actions.git_checkout_multiple,
+        }
+      },
+    },
     grep_string = {
       additional_args = {
         "--hidden"
