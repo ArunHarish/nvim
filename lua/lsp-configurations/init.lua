@@ -60,20 +60,14 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
     vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
     vim.keymap.set('n', '[E', function () vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end, opts)
     vim.keymap.set('n', ']E', function () vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end, opts)
-
-		vim.keymap.set('n', ']gd', function() vim.lsp.buf.definition({ jump_type='tab', reuse_win=true, }) end, opts)
+    vim.keymap.set('n', ']gd', function() vim.lsp.buf.definition({ jump_type='tab', reuse_win=true, }) end, opts)
     vim.keymap.set('n', ']gD', function() vim.lsp.buf.definition({ jump_type='tabn', reuse_win=true, }) end, opts)
-
 		vim.keymap.set('n', ']gr', function() vim.lsp.buf.references({ jump_type='tab', reuse_win=true }) end, opts)
-
 		vim.keymap.set('n', ']gi', function() vim.lsp.buf.implementation({ jump_type='tab', reuse_win=true }) end, opts)
     vim.keymap.set('n', ']sign', vim.lsp.buf.signature_help, opts)
 		vim.keymap.set('n', ']act', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', ']rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', ']hmm', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', ']tc', function()
-        vim.cmd("tabo")
-      end
-    )
+    vim.keymap.set('n', ']tc', function() vim.cmd("tabo") end)
 	end
 })
