@@ -13,6 +13,7 @@ opt.switchbuf= 'usetab'
 opt.foldmethod = 'syntax'
 opt.foldlevel = 999
 opt.clipboard = 'unnamed'
+opt.cursorline = true
 
 vim.call('plug#begin')
 
