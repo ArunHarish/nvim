@@ -1,12 +1,12 @@
-vim.keymap.set('n', '<leader>Dl', function() vim.call('vimspector#Launch') end, {})
-vim.keymap.set('n', '<leader>Dc', function() vim.call('vimspector#Continue') end, {})
-vim.keymap.set('n', '<leader>Di', function() vim.call('vimspector#StepInto') end, {})
-vim.keymap.set('n', '<leader>Do', function() vim.call('vimspector#StepOut') end, {})
-vim.keymap.set('n', '<leader>Dn', function() vim.call('vimspector#StepOver') end, {})
-vim.keymap.set('n', '<leader>Dr', function() vim.call('vimspector#Restart') end, {})
-vim.keymap.set('n', '<leader>Dx', function() vim.call('vimspector#Reset') end, {})
-vim.keymap.set('n', '<leader>Dbt', function() vim.call('vimspector#ToggleBreakpoint') end, {})
-vim.keymap.set('n', '<leader>DbH', function()
+vim.keymap.set('n', ']vl', function() vim.call('vimspector#Launch') end, {})
+vim.keymap.set('n', ']vc', function() vim.call('vimspector#Continue') end, {})
+vim.keymap.set('n', ']vi', function() vim.call('vimspector#StepInto') end, {})
+vim.keymap.set('n', ']vo', function() vim.call('vimspector#StepOut') end, {})
+vim.keymap.set('n', ']vn', function() vim.call('vimspector#StepOver') end, {})
+vim.keymap.set('n', ']vr', function() vim.call('vimspector#Restart') end, {})
+vim.keymap.set('n', ']vx', function() vim.call('vimspector#Reset') end, {})
+vim.keymap.set('n', ']vbt', function() vim.call('vimspector#ToggleBreakpoint') end, {})
+vim.keymap.set('n', ']vbH', function()
   vim.ui.input({
     prompt = "Enter your hit condition: ",
     default = "",
@@ -20,7 +20,7 @@ vim.keymap.set('n', '<leader>DbH', function()
     end
   )
 end, {})
-vim.keymap.set('n', '<leader>DbL', function()
+vim.keymap.set('n', ']vbL', function()
   vim.ui.input({
     prompt = "Enter your logpoint: ",
     default = "",
@@ -34,7 +34,7 @@ vim.keymap.set('n', '<leader>DbL', function()
     end
   )
 end, {})
-vim.keymap.set('n', '<leader>DbC', function()
+vim.keymap.set('n', ']vbC', function()
   vim.ui.input({
     prompt = "Enter your breakpoint condition: ",
     default = "",
@@ -48,7 +48,7 @@ vim.keymap.set('n', '<leader>DbC', function()
     end
   )
 end, {})
-vim.keymap.set('n', '<leader>Dbc', function() vim.call('vimspector#ClearBreakpoints') end, {})
-vim.keymap.set('n', '<leader>Dbl', function() vim.call('vimspector#ListBreakpoints') end, {})
+vim.keymap.set('n', ']vbc', function() vim.call('vimspector#ClearBreakpoints') end, {})
+vim.keymap.set('n', ']vbl', function() vim.call('vimspector#ListBreakpoints') end, {})
 vim.keymap.set('n', ']b', function() vim.call('vimspector#JumpToNextBreakpoint') end, {})
 vim.keymap.set('n', '[b', function() vim.call('vimspector#JumpToPreviousBreakpoint') end, {})
