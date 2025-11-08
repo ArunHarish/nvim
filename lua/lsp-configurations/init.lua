@@ -6,12 +6,9 @@ require('mason').setup {
 }
 require('mason-lspconfig').setup()
 
-
 vim.lsp.config('ts_ls', {
-	filetypes = { "typescript", "typescriptreact", "javascript" },
-	root_dir = function()
-		return vim.loop.cwd()
-	end
+	filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "javascriptreact" },
+	root_dir = vim.loop.cwd(),
 })
 vim.lsp.enable('ts_ls')
 
