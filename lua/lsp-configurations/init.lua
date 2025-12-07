@@ -37,8 +37,19 @@ vim.lsp.config('gopls', {
   },
 })
 vim.lsp.enable('gopls')
+
+vim.lsp.config('rust_analyzer', {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_dir = vim.loop.cwd(),
+})
 vim.lsp.enable('rust_analyzer')
+
 vim.lsp.enable('vimls')
+vim.lsp.config('clangd', {
+  cmd = { 'clangd' },
+  filetypes = { 'c', 'h' },
+});
 vim.lsp.enable('clangd')
 vim.lsp.enable('bashls')
 vim.lsp.enable('terraformls')
