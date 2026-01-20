@@ -55,7 +55,12 @@ vim.lsp.config('clangd', {
 vim.lsp.enable('clangd')
 vim.lsp.enable('bashls')
 vim.lsp.enable('terraformls')
+
+vim.lsp.config('eslint', {
+  root_dir = lspconfig.util.root_pattern('.eslintrc.js', '.eslintrc.cjs', '.eslintrc.yaml', '.eslintrc.yml', '.eslintrc.json', 'package.json', '.git'),
+})
 vim.lsp.enable('eslint')
+
 vim.lsp.enable('cssls')
 
 vim.lsp.config('lua_ls', {
