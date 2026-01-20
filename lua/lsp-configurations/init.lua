@@ -1,5 +1,7 @@
 local server = { "ts_ls", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls","rust_analyzer", "vimls", "snyk_ls", "biome", "gopls" }
 
+local lspconfig = require('lspconfig')
+
 require('mason').setup {
 	ensure_installed = server,
 	automatic_installation = true
@@ -7,7 +9,7 @@ require('mason').setup {
 require('mason-lspconfig').setup()
 
 vim.lsp.config('ts_ls', {
-	filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "javascriptreact" },
+	filetypes = { 'typescript', 'typescriptreact', 'javascript', 'typescript.tsx', 'javascriptreact' },
 	root_dir = vim.loop.cwd(),
 })
 vim.lsp.enable('ts_ls')
@@ -86,6 +88,9 @@ vim.lsp.enable('jsonls')
 vim.lsp.enable('docker_compose_language_service')
 
 -- Formatters
+vim.lsp.config('biome', {
+  filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "javascriptreact", "json" },
+})
 vim.lsp.enable('biome')
 vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = 1 })
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
