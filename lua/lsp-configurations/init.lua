@@ -1,4 +1,4 @@
-local server = { "ts_ls", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls","rust_analyzer", "vimls", "snyk_ls", "biome", "gopls" }
+local server = { "ts_ls", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls","rust_analyzer", "vimls", "snyk_ls", "biome", "gopls", "lemminx" }
 
 local lspconfig = require('lspconfig')
 
@@ -13,6 +13,12 @@ vim.lsp.config('ts_ls', {
 	root_dir = vim.loop.cwd(),
 })
 vim.lsp.enable('ts_ls')
+
+vim.lsp.config('lemminx', {
+  filetypes = { "xml", "xsd", "wsdl", "svg" },
+  root_dir = vim.loop.cwd(),
+})
+vim.lsp.enable('lemminx')
 
 vim.lsp.config('gopls', {
   default_config = {
