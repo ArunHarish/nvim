@@ -1,4 +1,4 @@
-local server = { "ts_ls", "eslint", "cssls", "lua_ls", "emmet_ls", "pyright", "html", "omnisharp", "yamlls", "clangd", "jsonls", "terraformls", "docker_compose_language_service", "bashls","rust_analyzer", "vimls", "snyk_ls", "biome", "gopls", "lemminx" }
+local server = { 'ts_ls', 'eslint', 'cssls', 'lua_ls', 'emmet_ls', 'pyright', 'html', 'omnisharp', 'yamlls', 'clangd', 'jsonls', 'terraformls', 'docker_compose_language_service', 'bashls','rust_analyzer', 'vimls', 'snyk_ls', 'biome', 'gopls', 'lemminx' }
 
 local lspconfig = require('lspconfig')
 
@@ -15,7 +15,7 @@ vim.lsp.config('ts_ls', {
 vim.lsp.enable('ts_ls')
 
 vim.lsp.config('lemminx', {
-  filetypes = { "xml", "xsd", "wsdl", "svg" },
+  filetypes = { 'xml', 'xsd', 'wsdl', 'svg' },
   root_dir = vim.loop.cwd(),
 })
 vim.lsp.enable('lemminx')
@@ -100,11 +100,11 @@ vim.lsp.enable('docker_compose_language_service')
 
 -- Formatters
 vim.lsp.config('biome', {
-  filetypes = { "typescript", "typescriptreact", "javascript", "typescript.tsx", "javascriptreact", "json" },
+  filetypes = { 'typescript', 'typescriptreact', 'javascript', 'typescript.tsx', 'javascriptreact', 'json' },
 })
 vim.lsp.enable('biome')
 vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = 1 })
-vim.api.nvim_create_autocmd({ "LspAttach" }, {
+vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 	callback = function(event)
 		local opts = { buffer = event.buf }
     vim.keymap.set('n', ']o', vim.diagnostic.open_float, opts)
@@ -118,6 +118,6 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
 		vim.keymap.set('n', ']gi', function() vim.lsp.buf.implementation({ jump_type='tab', reuse_win=true }) end, opts)
 		vim.keymap.set('n', ']act', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', ']rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', ']tc', function() vim.cmd("tabo") end)
+    vim.keymap.set('n', ']tc', function() vim.cmd('tabo') end)
 	end
 })

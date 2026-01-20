@@ -15,7 +15,7 @@ actions.grep_search = function(prompt_bufrn)
   require('telescope.builtin').live_grep({
     hidden = true,
     search_dirs = selected_directory,
-    prompt_title = string.format("Live Grep (%s)", table.concat(selections_directory_relative, ',')),
+    prompt_title = string.format('Live Grep (%s)', table.concat(selections_directory_relative, ',')),
   })
 end
 
@@ -23,12 +23,12 @@ telescope.setup {
   pickers = {
     grep_string = {
       additional_args = {
-        "--hidden"
+        '--hidden'
       }
     },
     live_grep = {
       additional_args = {
-        "--hidden"
+        '--hidden'
       },
     },
     lsp_references = {
@@ -73,12 +73,12 @@ telescope.setup {
     path_display = {'smart'},
     mappings = {
       i = {
-          ["<C-f>"] = actions.preview_scrolling_left,
-					["<CR>"] = actions.select_drop,
-          ["<C-t>"] = actions.select_tab_drop,
-          ["<C-l>"] = actions.preview_scrolling_right,
-          ["<A-f>"] = actions.results_scrolling_left,
-          ["<A-l>"] = actions.results_scrolling_right,
+          ['<C-f>'] = actions.preview_scrolling_left,
+					['<CR>'] = actions.select_drop,
+          ['<C-t>'] = actions.select_tab_drop,
+          ['<C-l>'] = actions.preview_scrolling_right,
+          ['<A-f>'] = actions.results_scrolling_left,
+          ['<A-l>'] = actions.results_scrolling_right,
       }
     }
   },
@@ -90,8 +90,8 @@ telescope.setup {
       hijack_netrw = true,
 			mappings = {
 				i = {
-          ["<C-g>"] = actions.grep_search,
-          ["<C-Space>"] = fb_actions.toggle_hidden,
+          ['<C-g>'] = actions.grep_search,
+          ['<C-Space>'] = fb_actions.toggle_hidden,
 				}
 			}
 		}
@@ -119,7 +119,7 @@ vim.keymap.set('n', ']dd', function()
 vim.keymap.set('n', ']dl', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', ']fb',  function ()
   telescope.extensions.file_browser.file_browser {
-    path = "%:p:h"
+    path = '%:p:h'
   }
 	end,
 { noremap = true })

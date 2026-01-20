@@ -8,12 +8,12 @@ vim.keymap.set('n', ']vx', function() vim.call('vimspector#Reset') end, {})
 vim.keymap.set('n', ']vbt', function() vim.call('vimspector#ToggleBreakpoint') end, {})
 vim.keymap.set('n', ']vbH', function()
   vim.ui.input({
-    prompt = "Enter your hit condition: ",
-    default = "",
+    prompt = 'Enter your hit condition: ',
+    default = '',
   },
     function(input)
       if input then
-        vim.fn["vimspector#ToggleBreakpoint"]({
+        vim.fn['vimspector#ToggleBreakpoint']({
           hitCondition = input,
         })
       end
@@ -22,12 +22,12 @@ vim.keymap.set('n', ']vbH', function()
 end, {})
 vim.keymap.set('n', ']vbL', function()
   vim.ui.input({
-    prompt = "Enter your logpoint: ",
-    default = "",
+    prompt = 'Enter your logpoint: ',
+    default = '',
   },
     function(input)
       if input then
-        vim.fn["vimspector#SetLineBreakpoint"]({
+        vim.fn['vimspector#SetLineBreakpoint']({
           logMessage = input,
         })
       end
@@ -36,12 +36,12 @@ vim.keymap.set('n', ']vbL', function()
 end, {})
 vim.keymap.set('n', ']vbC', function()
   vim.ui.input({
-    prompt = "Enter your breakpoint condition: ",
-    default = "",
+    prompt = 'Enter your breakpoint condition: ',
+    default = '',
   },
     function(input)
       if input then
-        vim.fn["vimspector#ToggleBreakpoint"]({
+        vim.fn['vimspector#ToggleBreakpoint']({
           condition = input,
         })
       end

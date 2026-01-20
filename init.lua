@@ -66,14 +66,14 @@ Plug 'SmiteshP/nvim-navic'
 
 -- fzf
 Plug ('junegunn/fzf', { ['do'] = function ()
-  vim.fn["fzf#install"]()
+  vim.fn['fzf#install']()
   end
 })
 
 vim.call('plug#end')
 
 -- Vim colorschemes
-vim.cmd[[let ayucolor="dark"]]
+vim.cmd[[let ayucolor='dark']]
 vim.cmd.colorscheme('github_light')
 
 -- Vim highlights

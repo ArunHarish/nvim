@@ -69,7 +69,7 @@ CustomExtensions.search_tab_pages = function ()
             absolute = false,
           }
         }, entry.path)
-        local display = string.format("%d %s %s", entry.tabpage, devicons, basename)
+        local display = string.format('%d %s %s', entry.tabpage, devicons, basename)
         return {
           display = display,
           ordinal = entry.path,
@@ -90,7 +90,7 @@ CustomExtensions.search_tab_pages = function ()
       return true
     end,
     previewer = previewers.new_buffer_previewer {
-      title = "Tab preview",
+      title = 'Tab preview',
       get_buffer_by_name = function (_, entry)
         return entry.display
       end,

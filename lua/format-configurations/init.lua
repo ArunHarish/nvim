@@ -1,6 +1,6 @@
 -- Rust format
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.rs" },
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  pattern = { '*.rs' },
   callback = function(event)
     vim.lsp.buf.format({ bufnr = event.buf })
   end
@@ -20,7 +20,7 @@ local function biome_organize_imports(client, bufnr)
       ['end'] = { line = last_line - 1, character = last_col },
     },
     context = {
-      only = { "source.organizeImports" },
+      only = { 'source.organizeImports' },
       diagnostics = {},
     },
   }
@@ -40,17 +40,17 @@ local function biome_organize_imports(client, bufnr)
 end
 -- Typescript/Javascript formats
 vim.cmd[[let g:neoformat_try_node_exe=1]]
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = { "*.ts", "*.js", "*.tsx", "*.jsx", "*.mjs", "*.json" },
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  pattern = { '*.ts', '*.js', '*.tsx', '*.jsx', '*.mjs', '*.json' },
   callback = function(event)
     local biome_client_filter = vim.lsp.get_clients({
       bufnr = event.buf,
-      name = "biome",
+      name = 'biome',
     })
 
     local eslint_client_filter = vim.lsp.get_clients({
       bufnr = event.buf,
-      name = "eslint",
+      name = 'eslint',
     })
 
     -- Use biome if it's available else check eslint otherwise use neoformat
@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       vim.lsp.buf.format()
       return
     else
-      vim.cmd("Neoformat prettier")
+      vim.cmd('Neoformat prettier')
       return
     end
   end
