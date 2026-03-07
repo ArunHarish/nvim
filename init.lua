@@ -1,6 +1,9 @@
 local opt = vim.opt
 local Plug = vim.fn['plug#']
 
+-- Load env file from config
+local toggle_config = require('toggle-configurations')
+
 -- Vim options
 opt.number = true
 opt.rnu = true
@@ -70,6 +73,14 @@ Plug ('junegunn/fzf', { ['do'] = function ()
   end
 })
 
+if toggle_config.is_copilot_enabled() then
+  -- GH co-pilot
+  Plug ('github/copilot.vim')
+
+  -- Copilot chat
+  Plug 'CopilotC-Nvim/CopilotChat.nvim'
+end
+
 vim.call('plug#end')
 
 -- Vim colorschemes
@@ -94,3 +105,7 @@ require'transparent-mode-configurations'
 require'lualine-configurations'
 require'navic-configurations'
 require'theme-configurations'
+
+if toggle_config.is_copilot_enabled() then
+  require'copilot-configurations'
+end
