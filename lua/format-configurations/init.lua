@@ -41,7 +41,7 @@ end
 -- Typescript/Javascript formats
 vim.cmd[[let g:neoformat_try_node_exe=1]]
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  pattern = { '*.ts', '*.js', '*.tsx', '*.jsx', '*.mjs', '*.json' },
+  pattern = { '*.ts', '*.js', '*.tsx', '*.jsx', '*.mjs', '*.json', '*.jsonc' },
   callback = function(event)
     local biome_client_filter = vim.lsp.get_clients({
       bufnr = event.buf,
