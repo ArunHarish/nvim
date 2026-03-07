@@ -1,6 +1,7 @@
-local server = { 'ts_ls', 'eslint', 'cssls', 'lua_ls', 'emmet_ls', 'pyright', 'html', 'omnisharp', 'yamlls', 'clangd', 'jsonls', 'terraformls', 'docker_compose_language_service', 'bashls','rust_analyzer', 'vimls', 'snyk_ls', 'biome', 'gopls', 'lemminx' }
+local server = { 'ts_ls', 'eslint', 'cssls', 'lua_ls', 'emmet_ls', 'pyright', 'html', 'omnisharp', 'clangd', 'jsonls', 'terraformls', 'docker_compose_language_service', 'bashls','rust_analyzer', 'vimls', 'snyk_ls', 'biome', 'cfn-lint', 'gopls', 'lemminx' }
 
 local lspconfig = require('lspconfig')
+local toggle_config = require('toggle-configurations')
 
 require('mason').setup {
 	ensure_installed = server,
@@ -94,13 +95,19 @@ vim.lsp.enable('emmet_ls')
 vim.lsp.enable('pyright')
 vim.lsp.enable('html')
 vim.lsp.enable('omnisharp')
-vim.lsp.enable('yamlls')
+
+vim.lsp.config('cfn-lint', {
+  cmd = { 'cfn-lint' },
+  filetypes = { 'yaml', 'yml', 'json' },
+})
+vim.lsp.enable('cfn-lint')
+
 vim.lsp.enable('jsonls')
 vim.lsp.enable('docker_compose_language_service')
 
 -- Formatters
 vim.lsp.config('biome', {
-  filetypes = { 'typescript', 'typescriptreact', 'javascript', 'typescript.tsx', 'javascriptreact', 'json' },
+  filetypes = { 'typescript', 'typescriptreact', 'javascript', 'typescript.tsx', 'javascriptreact', 'json', 'jsonc' },
 })
 vim.lsp.enable('biome')
 vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = 1 })
@@ -119,5 +126,8 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 		vim.keymap.set('n', ']act', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', ']rn', vim.lsp.buf.rename, opts)
     vim.keymap.set('n', ']tc', function() vim.cmd('tabo') end)
+    if toggle_config.is_copilot_enabled() then
+      vim.keymap.set('n', ']H', function() vim.cmd('CopilotChatToggle') end, opts)
+    end
 	end
 })
