@@ -1,4 +1,4 @@
-local server = { 'ts_ls', 'eslint', 'cssls', 'lua_ls', 'emmet_ls', 'pyright', 'html', 'omnisharp', 'clangd', 'jsonls', 'terraformls', 'docker_compose_language_service', 'bashls','rust_analyzer', 'vimls', 'snyk_ls', 'biome', 'cfn-lint', 'gopls', 'lemminx' }
+local server = { 'ts_ls', 'eslint', 'cssls', 'lua_ls', 'emmet_ls', 'pyright', 'html', 'omnisharp', 'clangd', 'jsonls', 'terraformls', 'docker_compose_language_service', 'bashls','rust_analyzer', 'vimls', 'snyk_ls', 'biome', 'cfn-lint', 'gopls', 'lemminx', 'yamlls' }
 
 local lspconfig = require('lspconfig')
 local toggle_config = require('toggle-configurations')
@@ -91,16 +91,23 @@ vim.lsp.config('lua_ls', {
 })
 vim.lsp.enable('lua_ls')
 
+vim.lsp.enable('yamlls')
+vim.lsp.config('yamlls', {
+  -- Don't start the language server for template.yaml files, since they are SAM templates
+  -- The cfn-lsp language server will handle those files instead
+  root_dir = function(bufnr, on_dir)
+    local filename = vim.api.nvim_buf_get_name(bufnr)
+    if filename:match("template%.yaml$") then
+      return nil
+    end
+    return on_dir(vim.fn.getcwd())
+  end,
+})
+
 vim.lsp.enable('emmet_ls')
 vim.lsp.enable('pyright')
 vim.lsp.enable('html')
 vim.lsp.enable('omnisharp')
-
-vim.lsp.config('cfn-lint', {
-  cmd = { 'cfn-lint' },
-  filetypes = { 'yaml', 'yml', 'json' },
-})
-vim.lsp.enable('cfn-lint')
 
 vim.lsp.enable('jsonls')
 vim.lsp.enable('docker_compose_language_service')
@@ -110,7 +117,28 @@ vim.lsp.config('biome', {
   filetypes = { 'typescript', 'typescriptreact', 'javascript', 'typescript.tsx', 'javascriptreact', 'json', 'jsonc' },
 })
 vim.lsp.enable('biome')
+
+-- Check CloudFormation LSP server exists
+local cfn_lsp_path = vim.fn.stdpath('data') .. '/custom-lsp/cfn-lsp/cfn-lsp-server-standalone.js'
+if vim.uv.fs_stat(cfn_lsp_path) then
+  vim.lsp.config('cfn-lsp', {
+      cmd = { "node", cfn_lsp_path, '--stdio' },
+      filetypes = { 'yaml' },
+      root_dir = function(bufnr, on_dir)
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        if not filename:match("template%.yaml$") then
+          return nil
+        end
+        vim.notify("Starting cfn-lsp for " .. filename)
+        return on_dir(vim.fn.getcwd())
+      end,
+  })
+  vim.lsp.enable('cfn-lsp')
+end
+
 vim.diagnostic.jump({ severity = vim.diagnostic.severity.ERROR, count = 1 })
+
+-- LSP keybindings
 vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 	callback = function(event)
 		local opts = { buffer = event.buf }
