@@ -73,6 +73,9 @@ Plug ('junegunn/fzf', { ['do'] = function ()
   end
 })
 
+-- render markdown
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
 if toggle_config.is_copilot_enabled() then
   -- GH co-pilot
   Plug ('github/copilot.vim')
