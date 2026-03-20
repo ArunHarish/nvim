@@ -129,7 +129,7 @@ if vim.uv.fs_stat(cfn_lsp_path) then
         if not filename:match("template%.yaml$") then
           return nil
         end
-        vim.notify("Starting cfn-lsp for " .. filename)
+        vim.print("Starting cfn-lsp for " .. filename)
         return on_dir(vim.fn.getcwd())
       end,
   })
