@@ -9,6 +9,12 @@ require('mason').setup {
 }
 require('mason-lspconfig').setup()
 
+vim.lsp.config('jdtls', {
+  filetypes = { 'java' },
+  root_dir = vim.loop.cwd(),
+})
+vim.lsp.enable('jdtls')
+
 vim.lsp.config('ts_ls', {
 	filetypes = { 'typescript', 'typescriptreact', 'javascript', 'typescript.tsx', 'javascriptreact' },
 	root_dir = vim.loop.cwd(),
