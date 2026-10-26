@@ -103,7 +103,7 @@ vim.lsp.config('yamlls', {
   -- The cfn-lsp language server will handle those files instead
   root_dir = function(bufnr, on_dir)
     local filename = vim.api.nvim_buf_get_name(bufnr)
-    if filename:match("template%.yaml$") then
+    if filename:match("template.*%.yaml$") then
       return nil
     end
     return on_dir(vim.fn.getcwd())
@@ -132,10 +132,9 @@ if vim.uv.fs_stat(cfn_lsp_path) then
       filetypes = { 'yaml' },
       root_dir = function(bufnr, on_dir)
         local filename = vim.api.nvim_buf_get_name(bufnr)
-        if not filename:match("template%.yaml$") then
+        if not filename:match("template.*%.yaml$") then
           return nil
         end
-        vim.print("Starting cfn-lsp for " .. filename)
         return on_dir(vim.fn.getcwd())
       end,
   })
