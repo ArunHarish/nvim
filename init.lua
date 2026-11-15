@@ -93,9 +93,6 @@ vim.call('plug#end')
 vim.cmd[[let ayucolor='dark']]
 vim.cmd.colorscheme('github_light')
 
--- Vim highlights
-vim.api.nvim_set_hl(0, 'Comment', { italic=true })
-
 -- General keymaps 
 vim.keymap.set('n', '<space>q',vim.cmd.ccl, {});
 

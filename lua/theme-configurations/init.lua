@@ -13,6 +13,11 @@ if vim.uv.fs_stat(THEME_LISTENER_SOCK) then
       elseif data[1] == 'light' then
         vim.cmd.colorscheme('github_light')
       end
+
+      -- Vim highlights
+      vim.api.nvim_set_hl(0, 'Comment', { italic=true })
+      vim.api.nvim_set_hl(0, 'Keyword', { italic=true })
+
     end
   })
 else
