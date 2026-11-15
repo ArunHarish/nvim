@@ -20,6 +20,9 @@ opt.cursorline = true
 
 vim.call('plug#begin')
 
+-- Treesitter
+Plug ('nvim-treesitter/nvim-treesitter')
+
 -- Debugger
 Plug ('puremourning/vimspector')
 
